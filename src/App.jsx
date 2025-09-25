@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className='p-6'>
-      <h1 className='text-2xl font-bold text-center mb-6'>Calculadora de Edad de Mascota</h1>
+      <h2 className='text-2xl font-bold text-center mb-6'>Calculadora de Edad de Mascota</h2>
       <PetForm onCalculate={handleCalculate} />
       <PetCard data={result} />
     </div>
