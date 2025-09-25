@@ -16,16 +16,19 @@ function PetCard({ data }) {
     };
 
     return (
-        <div className="flex flex-col md:flex-row items-start bg-white border border-gray-200 rounded-lg shadow-sm max-w-xl mx-auto hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-            {/* Imagen */}
-            <img
-                src={breedData?.image || notFoundImg}
-                alt={breedData?.name || "Mascota"}
-                className="object-contain w-full h-64 md:h-auto md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
-            />
+        <div className="flex flex-col md:flex-row items-stretch bg-white border border-gray-200 rounded-lg shadow-sm max-w-xl mx-auto hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            {/* Contenedor de la imagen con fondo */}
+            <div className="bg-cyan-100 w-full h-96 md:h-auto md:w-48 md:rounded-l-lg rounded-t-lg  flex-shrink-0">
+                <img
+                    src={breedData?.image || notFoundImg}
+                    alt={breedData?.name || "Mascota"}
+                    className="object-cover w-full h-full block"
+                />
+            </div>
+            
 
             {/* Contenido */}
-            <div className="flex flex-col justify-start p-4 text-left">
+            <div className="flex flex-col justify-start p-4 flex-1 text-left">
                 <h2 className="text-2xl font-bold">{petName || "Mascota"}</h2>
                 <p className="text-gray-700 dark:text-gray-400">Tipo: {type === "dog" ? "Perro 🐶" : "Gato 🐱"}</p>
                 <p className="text-gray-700 dark:text-gray-400">Raza: {breedData?.name || "Desconocido"}</p>

@@ -12,19 +12,25 @@ function PetForm({onCalculate}) {
     const [petNameError, setPetNameError] = useState("");
     const [ageError, setAgeError] = useState("");
 
-
     const breeds = type === "dog" ? dogs : cats;
-    const isValid = petName && breed && age >= 0 && age <= 20;
+    const breedData = breed.trim() 
+        ? breeds.find(b => b.name.toLowerCase() === breed.toLowerCase().trim()) 
+        : null;
+    const ageNum = Number(age);
 
-    const handleSubmit = (e) => {
+    const isValid = petName &&
+        petName.length <= 10 &&
+        breedData &&
+        age !== "" &&
+        ageNum >= 0 &&
+        ageNum <= 20 &&
+        !petNameError &&
+        !ageError;
+   
+        const handleSubmit = (e) => {
         e.preventDefault();
         
         if (!breed || !age) return;
-
-        // buscar el objeto completo de la raza
-        const breedData = breeds.find(
-            (b) => b.name.toLowerCase() === breed.toLowerCase()
-        );
 
         onCalculate({ type, breedData, age: Number(age), petName });
      }
@@ -60,7 +66,7 @@ function PetForm({onCalculate}) {
                         <div className="col-span-1">
                             <label htmlFor="type" className="block text-sm/6 font-medium text-gray-900 dark:text-white">Tipo</label>
                             <div className="mt-2">
-                                <select id="type" name="type" autoComplete="country-name"  className="w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:*:bg-gray-800 dark:focus:outline-indigo-500" value={type} onChange={(e) => setType(e.target.value)}>
+                                <select id="type" name="type" autoomplete="country-name"  className="w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:*:bg-gray-800 dark:focus:outline-indigo-500" value={type} onChange={(e) => setType(e.target.value)}>
                                     <option value="cat">🐱 Gato</option>
                                     <option value="dog">🐶 Perro</option>
                                 </select>
@@ -125,18 +131,22 @@ function PetForm({onCalculate}) {
                     </div>
                 </div>
             </div>
-            
-
-
      
             {/* Botón */}
-            <button
+           <button
                 type="submit"
                 disabled={!isValid}
-                className="mt-4 px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
-            >
+                className={`mt-4 px-5 py-2 rounded font-medium text-sm focus:outline-none focus:ring-4
+                    ${isValid 
+                    ? "bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 text-white"
+                    : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    }`}
+                style={{ backgroundColor: isValid ? "#602d08ff" : "#D1D5DB" }} // Forzar fondo sólido
+                >
                 Calcular
             </button>
+
+
         </form>
     );
 }
