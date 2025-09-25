@@ -1,36 +1,16 @@
-# 🐾 Dog & Cat Age Calculator
+# React + Vite
 
-Age calculator for **dogs and cats**, built in **React + Vite**.
-Converts your pet's actual age to human years using veterinary formulas.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## 🚀 Features
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- 🐶 **Dogs**: Calculation based on size and weight (based on breeds).
-- 🐱 **Cats**: Standard formula (15 + 9 + 4/extra year).
-- 📷 Displays breed images (with `not-found.png` fallback).
-- 🌐 Deployment to GitHub Pages.
-- 🧩 Future: integrate as a WordPress plugin.
+## React Compiler
 
----
+The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## 📂 Estructura
-```bash
-public/
-├── breeds.json # Dogs and cats dataset
-└── images/ # Breeds imgs + not-found
-src/
-├── App.jsx 
-├── main.js
-└── components/
-```
+## Expanding the ESLint configuration
 
-## 🛠️ Uso local
-
-```bash
-git clone https://github.com/melissahuertadev/dog-cat-age-calculator.git
-cd dog-cat-age-calculator
-npm install
-npm run dev
-```
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
