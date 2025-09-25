@@ -19,16 +19,18 @@ function calculateHumanAge(type, age) {
 function App() {
   const [result, setResult] = useState(null);
 
-  const handleCalculate = ({type, breedData, age}) => {
+  const handleCalculate = ({type, breedData, age, petName}) => {
     const humanAge = calculateHumanAge(type, age);
-    setResult({type, breedData, age, humanAge});
+    setResult({type, breedData, age, humanAge, petName});
   }
 
   return (
     <div className='p-6'>
       <h2 className='text-2xl font-bold text-center mb-6'>Calculadora de Edad de Mascota</h2>
       <PetForm onCalculate={handleCalculate} />
-      <PetCard data={result} />
+      <div className="mt-6">
+              <PetCard data={result} />
+      </div>
     </div>
   )
 }
