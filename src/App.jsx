@@ -5,6 +5,7 @@ import PetCard from "./components/PetCard";
 import 'aos/dist/aos.css';
 import './App.css'
 
+// Actualizar función para calcular edad según tamaño
 function calculateHumanAge(type, age) {
   if (type === 'dog') {
     if (age === 1) return 15;
@@ -20,25 +21,33 @@ function calculateHumanAge(type, age) {
 
 function App() {
   const [result, setResult] = useState(null);
-  
+  const [hasData, setData] = useState(false);
+
+  // Recalcular AOS cuando hay datos
   useEffect(() => {
     AOS.init({ duration: 1000 });
-  }, [])
+    AOS.refresh();
+  }, [hasData])
 
   const handleCalculate = ({type, breedData, age, petName}) => {
     const humanAge = calculateHumanAge(type, age);
     setResult({type, breedData, age, humanAge, petName});
+    setData(true);
   }
-
-
 
   return (
     <div className='p-6'>
-      <h2 className='text-2xl font-bold text-center mb-6'>Calculadora de Edad de Mascota</h2>
-      <PetForm onCalculate={handleCalculate} />
-      <div className="mt-6" data-aos="fade-up">
-              <PetCard data={result} />
-      </div>
+      <h2 className='text-2xl font-bold text-center mb-6'>Calculadora de Edad de Mascota Feliz</h2>
+      <p className='text-center text-gray-600 dark:text-gray-400'>Ingresa los datos de tu mascota 🐶🐱</p>
+      {
+        !hasData ? (
+          <div className="mt-6" data-aos="fade-up">
+            <PetForm onCalculate={handleCalculate} data-aos="fade-up" />
+          </div>) : (
+          <div className="mt-6" data-aos="fade-up">
+            <PetCard data={result} />
+          </div>)
+        }
     </div>
   )
 }

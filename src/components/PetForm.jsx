@@ -97,13 +97,14 @@ function PetForm({onCalculate}) {
 
                         </div>
 
-                        {/* Edad */}
+                        {/** - cambiar a un date select "Cumpleaños" */}
+                        {/* Cumpleaños */}
                         <div className="col-span-1">
                             <label
                                 htmlFor="age"
                                 className="block text-sm/6 font-medium text-gray-900 dark:text-white"
                             >
-                                Edad (años)
+                                Cumpleaños
                             </label>
                             <div className="mt-2">
                                 <input
