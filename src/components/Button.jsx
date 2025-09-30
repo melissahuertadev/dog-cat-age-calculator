@@ -1,6 +1,6 @@
 import React from "react";
 
-function Button({ children, onClick, disabled = false}) {
+function Button({ children, onClick, disabled = false, color = "#602d08ff"}) {
     return (
         <button
             onClick={onClick}
@@ -10,7 +10,7 @@ function Button({ children, onClick, disabled = false}) {
                 ? "bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 text-white"
                 : "bg-gray-300 text-gray-500 cursor-not-allowed"
                 }`}
-            style={{ backgroundColor: !disabled ? "#602d08ff" : "#D1D5DB" }}
+            style={!disabled ? { backgroundColor: color } : {}}
         >
             {children}
         </button>
