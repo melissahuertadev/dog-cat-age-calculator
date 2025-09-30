@@ -37,7 +37,6 @@ function App() {
   return (
     <div className='p-6'>
       <h2 className='text-2xl font-bold text-center mb-6'>Calculadora de Edad de Mascota Feliz</h2>
-      {!hasData && <p className='text-center text-gray-600 dark:text-gray-400'>Ingresa los datos de tu mascota 🐶🐱</p>}
       <div className="mt-6">
         <AnimatePresence mode="wait">
           {!hasData ? (
@@ -48,6 +47,7 @@ function App() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
+              <p className='text-center text-gray-600 dark:text-gray-400'>Ingresa los datos de tu mascota 🐶🐱</p>
                <PetForm onCalculate={handleCalculate} />
             </motion.div>
           ) : (
