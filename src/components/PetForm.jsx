@@ -103,8 +103,32 @@ function PetForm({onCalculate}) {
                                     ))}
                                 </datalist>
                             </div>
-
                         </div>
+
+                        {/* Tamanño */}
+                        {type === "dog" && breed.toLocaleLowerCase() === "otro" && (
+                            <div className="col-span-1">
+                                <label
+                                    htmlFor="size"
+                                    className="block text-sm/6 font-medium text-gray-900 dark:text-white"
+                                >
+                                    Tamaño
+                                </label>
+                                <div className="mt-2">
+                                    <select
+                                        id="size"
+                                        name="size"
+                                        autoComplete="off"
+                                        className="w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:*:bg-gray-800 dark:focus:outline-indigo-500"
+                                    >
+                                        <option value="small">Pequeño</option>
+                                        <option value="medium">Mediano</option>
+                                        <option value="large">Grande</option>
+                                        <option value="giant">Gigante</option>
+                                    </select>
+                                </div>
+                            </div>
+                        )}
 
                         {/** - cambiar a un date select "Cumpleaños" */}
                         {/* Cumpleaños */}
