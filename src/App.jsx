@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import AOS from 'aos';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import PetForm from "./components/PetForm";
 import PetCard from "./components/PetCard";
-import 'aos/dist/aos.css';
 import './App.css'
 
 // Actualizar función para calcular edad según tamaño
@@ -23,31 +22,54 @@ function App() {
   const [result, setResult] = useState(null);
   const [hasData, setData] = useState(false);
 
-  // Recalcular AOS cuando hay datos
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-    AOS.refresh();
-  }, [hasData])
-
   const handleCalculate = ({type, breedData, age, petName}) => {
     const humanAge = calculateHumanAge(type, age);
     setResult({type, breedData, age, humanAge, petName});
     setData(true);
   }
 
+  const handleReset = () => {
+    setResult(null);
+    setData(false);
+  };
+
   return (
     <div className='p-6'>
       <h2 className='text-2xl font-bold text-center mb-6'>Calculadora de Edad de Mascota Feliz</h2>
       <p className='text-center text-gray-600 dark:text-gray-400'>Ingresa los datos de tu mascota 🐶🐱</p>
-      {
-        !hasData ? (
-          <div className="mt-6" data-aos="fade-up">
-            <PetForm onCalculate={handleCalculate} data-aos="fade-up" />
-          </div>) : (
-          <div className="mt-6" data-aos="fade-up">
-            <PetCard data={result} />
-          </div>)
-        }
+      <div className="mt-6">
+        <AnimatePresence mode="wait">
+          {!hasData ? (
+            <motion.div
+              key="form"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+               <PetForm onCalculate={handleCalculate} />
+            </motion.div>
+          ) : (
+            <motion.div
+                key="card"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.6 }}
+            >
+                <PetCard data={result} />
+                <div className="text-center mt-4">
+                  <button
+                    onClick={handleReset}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                  >
+                    Volver a calcular
+                  </button>
+                </div>
+              </motion.div>
+            )}
+        </AnimatePresence>
+      </div>
     </div>
   )
 }
