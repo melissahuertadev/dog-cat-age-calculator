@@ -48,5 +48,6 @@
   { "id": 47, "name": "Shih Tzu", "nameEs": "Shih Tzu", "size": "small", "weightKg": [4, 7], "image": "images/dogs/shih-tzu.png" },
   { "id": 48, "name": "Siberian Husky", "nameEs": "Husky Siberiano", "size": "large", "weightKg": [16, 27], "image": "images/dogs/siberian-husky.png" },
   { "id": 49, "name": "Tibetan Mastiff", "nameEs": "Mastín Tibetano", "size": "large", "weightKg": [45, 72], "image": "images/dogs/tibetan-mastiff.png" },
-  { "id": 50, "name": "Yorkshire Terrier", "nameEs": "Yorkshire Terrier", "size": "small", "weightKg": [2, 3], "image": "images/dogs/yorkshire-terrier.png" }
+  { "id": 50, "name": "Yorkshire Terrier", "nameEs": "Yorkshire Terrier", "size": "small", "weightKg": [2, 3], "image": "images/dogs/yorkshire-terrier.png" },
+  {"id": 999, "name": "Other", "nameEs": "Otro", "image": "images/pet-not-found.png"}
 ]

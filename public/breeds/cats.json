@@ -47,5 +47,6 @@
   { "id": 46, "name": "Tortoiseshell", "nameEs": "Carey", "image": "images/cats/tortoiseshell.png" },
   { "id": 47, "name": "Toyger", "nameEs": "Toyger", "image": "images/cats/toyger.png" },
   { "id": 48, "name": "Tuxedo", "nameEs": "Tuxedo", "image": "images/cats/tuxedo.png" },
-  { "id": 49, "name": "York Chocolate", "nameEs": "York Chocolate", "image": "images/cats/york-chocolate.png" }
+  { "id": 49, "name": "York Chocolate", "nameEs": "York Chocolate", "image": "images/cats/york-chocolate.png" },
+  {"id": 999, "name": "Other", "nameEs": "Otro", "image": "images/pet-not-found.png"}
 ]
