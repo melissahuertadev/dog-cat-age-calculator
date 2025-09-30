@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Quitar el icono de autocompletar/contactos en Safari */
+input::-webkit-contacts-auto-fill-button {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
