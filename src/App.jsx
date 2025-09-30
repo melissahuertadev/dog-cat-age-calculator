@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Button from "./components/Button";
 import PetForm from "./components/PetForm";
 import PetCard from "./components/PetCard";
 import './App.css'
@@ -59,12 +60,9 @@ function App() {
             >
                 <PetCard data={result} />
                 <div className="text-center mt-4">
-                  <button
-                    onClick={handleReset}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-                  >
+                  <Button onClick={handleReset}>
                     Volver a calcular
-                  </button>
+                  </Button>
                 </div>
               </motion.div>
             )}

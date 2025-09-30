@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./Button";
 import breedsData from "../../public/breeds.json";
 
 const dogs = breedsData.dogs;
@@ -134,20 +135,9 @@ function PetForm({onCalculate}) {
             </div>
      
             {/* Botón */}
-           <button
-                type="submit"
-                disabled={!isValid}
-                className={`mt-4 px-5 py-2 rounded font-medium text-sm focus:outline-none focus:ring-4
-                    ${isValid 
-                    ? "bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 text-white"
-                    : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    }`}
-                style={{ backgroundColor: isValid ? "#602d08ff" : "#D1D5DB" }} // Forzar fondo sólido
-                >
+            <Button type="submit" disabled={!isValid} onClick={handleSubmit}>
                 Calcular
-            </button>
-
-
+            </Button>
         </form>
     );
 }

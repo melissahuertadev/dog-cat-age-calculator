@@ -1,3 +1,4 @@
+import Button from "./Button";
 import notFoundImg from '../../public/images/pet-not-found.png';
 
 function PetCard({ data }) {
@@ -33,12 +34,7 @@ function PetCard({ data }) {
                 <p className="text-gray-700 dark:text-gray-400">Tipo: {type === "dog" ? "Perro 🐶" : "Gato 🐱"}</p>
                 <p className="text-gray-700 dark:text-gray-400">Raza: {breedData?.name || "Desconocido"}</p>
                 <p className="text-gray-700 dark:text-gray-400">Edad: {age} años ({humanAge} años humanos)</p>
-                <button
-                    onClick={handleShare}
-                    className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                    >
-                        Compartir
-                </button>
+                <Button onClick={handleShare}>Compartir</Button>
             </div>
         </div>
     );
