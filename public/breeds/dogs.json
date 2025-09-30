@@ -1,0 +1,352 @@
+[
+    {
+      "id": 1,
+      "name": "Akita Inu",
+      "size": "large",
+      "weightKg": [32, 45],
+      "image": "images/dogs/akita-inu.png"
+    },
+    {
+      "id": 2,
+      "name": "Alaskan Malamute",
+      "size": "large",
+      "weightKg": [34, 45],
+      "image": "images/dogs/alaskan-malamute.png"
+    },
+    {
+      "id": 3,
+      "name": "Basenji",
+      "size": "small",
+      "weightKg": [9, 11],
+      "image": "images/dogs/basenji.png"
+    },
+    {
+      "id": 4,
+      "name": "Basset Hound",
+      "size": "medium",
+      "weightKg": [20, 30],
+      "image": "images/dogs/basset-hound.png"
+    },
+    {
+      "id": 5,
+      "name": "Beagle",
+      "size": "small",
+      "weightKg": [9, 11],
+      "image": "images/dogs/beagle.png"
+    },
+    {
+      "id": 6,
+      "name": "Bergamasco",
+      "size": "large",
+      "weightKg": [26, 38],
+      "image": "images/dogs/bergamasco.png"
+    },
+    {
+      "id": 7,
+      "name": "Bernese Mountain",
+      "size": "large",
+      "weightKg": [36, 50],
+      "image": "images/dogs/bernese-mountain.png"
+    },
+    {
+      "id": 8,
+      "name": "Bichon Frise",
+      "size": "small",
+      "weightKg": [5, 8],
+      "image": "images/dogs/bichon-frise.png"
+    },
+    {
+      "id": 9,
+      "name": "Border Collie",
+      "size": "medium",
+      "weightKg": [12, 20],
+      "image": "images/dogs/border-collie.png"
+    },
+    {
+      "id": 10,
+      "name": "Boxer",
+      "size": "large",
+      "weightKg": [25, 32],
+      "image": "images/dogs/boxer.png"
+    },
+    {
+      "id": 11,
+      "name": "Briard",
+      "size": "large",
+      "weightKg": [30, 40],
+      "image": "images/dogs/briard.png"
+    },
+    {
+      "id": 12,
+      "name": "Bull Terrier",
+      "size": "medium",
+      "weightKg": [22, 32],
+      "image": "images/dogs/bull-terrier.png"
+    },
+    {
+      "id": 13,
+      "name": "Bulldog",
+      "size": "medium",
+      "weightKg": [18, 23],
+      "image": "images/dogs/bulldog.png"
+    },
+    {
+      "id": 14,
+      "name": "Chihuahua",
+      "size": "small",
+      "weightKg": [1.5, 3],
+      "image": "images/dogs/chihuahua.png"
+    },
+    {
+      "id": 15,
+      "name": "Chihuahua (Variant)",
+      "size": "small",
+      "weightKg": [1.5, 3],
+      "image": "images/dogs/chihuahua-2.png"
+    },
+    {
+      "id": 16,
+      "name": "Chinese Crested",
+      "size": "small",
+      "weightKg": [4, 6],
+      "image": "images/dogs/chinese-crested.png"
+    },
+    {
+      "id": 17,
+      "name": "Chow Chow",
+      "size": "medium",
+      "weightKg": [20, 32],
+      "image": "images/dogs/chow-chow.png"
+    },
+    {
+      "id": 18,
+      "name": "Cocker Spaniel",
+      "size": "medium",
+      "weightKg": [12, 16],
+      "image": "images/dogs/cocker-spaniel.png"
+    },
+    {
+      "id": 19,
+      "name": "Collie",
+      "size": "large",
+      "weightKg": [23, 34],
+      "image": "images/dogs/collie.png"
+    },
+    {
+      "id": 20,
+      "name": "Corgi",
+      "size": "small",
+      "weightKg": [10, 14],
+      "image": "images/dogs/corgi.png"
+    },
+    {
+      "id": 21,
+      "name": "Dachshund",
+      "size": "small",
+      "weightKg": [7, 14],
+      "image": "images/dogs/dachshund.png"
+    },
+    {
+      "id": 22,
+      "name": "Dalmatian",
+      "size": "large",
+      "weightKg": [23, 32],
+      "image": "images/dogs/dalmatian.png"
+    },
+    {
+      "id": 23,
+      "name": "Doberman",
+      "size": "large",
+      "weightKg": [30, 40],
+      "image": "images/dogs/doberman.png"
+    },
+    {
+      "id": 24,
+      "name": "French Bulldog",
+      "size": "small",
+      "weightKg": [9, 13],
+      "image": "images/dogs/french-bulldog.png"
+    },
+    {
+      "id": 25,
+      "name": "German Shepherd",
+      "size": "large",
+      "weightKg": [30, 40],
+      "image": "images/dogs/german-shepherd.png"
+    },
+    {
+      "id": 26,
+      "name": "Golden Retriever",
+      "size": "large",
+      "weightKg": [25, 34],
+      "image": "images/dogs/golden-retriever.png"
+    },
+    {
+      "id": 27,
+      "name": "Great Dane",
+      "size": "large",
+      "weightKg": [45, 90],
+      "image": "images/dogs/great-dane.png"
+    },
+    {
+      "id": 28,
+      "name": "Greyhound",
+      "size": "large",
+      "weightKg": [27, 32],
+      "image": "images/dogs/greyhound.png"
+    },
+    {
+      "id": 29,
+      "name": "Havanese",
+      "size": "small",
+      "weightKg": [4, 7],
+      "image": "images/dogs/havanese.png"
+    },
+    {
+      "id": 30,
+      "name": "Jack Russell Terrier",
+      "size": "small",
+      "weightKg": [6, 8],
+      "image": "images/dogs/jack-russell-terrier.png"
+    },
+    {
+      "id": 31,
+      "name": "Japanese Chin",
+      "size": "small",
+      "weightKg": [2, 7],
+      "image": "images/dogs/japanese-chin.png"
+    },
+    {
+      "id": 32,
+      "name": "Labrador Retriever",
+      "size": "large",
+      "weightKg": [25, 36],
+      "image": "images/dogs/labrador-retriever.png"
+    },
+    {
+      "id": 33,
+      "name": "Papillon",
+      "size": "small",
+      "weightKg": [3, 5],
+      "image": "images/dogs/papillon.png"
+    },
+    {
+      "id": 34,
+      "name": "Pharaoh Hound",
+      "size": "medium",
+      "weightKg": [20, 25],
+      "image": "images/dogs/pharaoh-hound.png"
+    },
+    {
+      "id": 35,
+      "name": "Pitbull",
+      "size": "medium",
+      "weightKg": [16, 27],
+      "image": "images/dogs/pitbull.png"
+    },
+    {
+      "id": 36,
+      "name": "Pointer",
+      "size": "large",
+      "weightKg": [20, 34],
+      "image": "images/dogs/pointer.png"
+    },
+    {
+      "id": 37,
+      "name": "Pomeranian",
+      "size": "small",
+      "weightKg": [1.8, 3.5],
+      "image": "images/dogs/pomeranian.png"
+    },
+    {
+      "id": 38,
+      "name": "Poodle",
+      "size": "medium",
+      "weightKg": [20, 32],
+      "image": "images/dogs/poodle.png"
+    },
+    {
+      "id": 39,
+      "name": "Pug",
+      "size": "small",
+      "weightKg": [6, 8],
+      "image": "images/dogs/pug.png"
+    },
+    {
+      "id": 40,
+      "name": "Rottweiler",
+      "size": "large",
+      "weightKg": [35, 60],
+      "image": "images/dogs/rottweiler.png"
+    },
+    {
+      "id": 41,
+      "name": "Saint Bernard",
+      "size": "large",
+      "weightKg": [54, 82],
+      "image": "images/dogs/saint-bernard.png"
+    },
+    {
+      "id": 42,
+      "name": "Saluki",
+      "size": "medium",
+      "weightKg": [18, 27],
+      "image": "images/dogs/saluki.png"
+    },
+    {
+      "id": 43,
+      "name": "Samoyed",
+      "size": "large",
+      "weightKg": [20, 32],
+      "image": "images/dogs/samoyed.png"
+    },
+    {
+      "id": 44,
+      "name": "Schnauzer",
+      "size": "medium",
+      "weightKg": [14, 20],
+      "image": "images/dogs/schnauzer.png"
+    },
+    {
+      "id": 45,
+      "name": "Shar Pei",
+      "size": "medium",
+      "weightKg": [18, 25],
+      "image": "images/dogs/shar-pei.png"
+    },
+    {
+      "id": 46,
+      "name": "Shiba Inu",
+      "size": "small",
+      "weightKg": [8, 11],
+      "image": "images/dogs/shiba-inu.png"
+    },
+    {
+      "id": 47,
+      "name": "Shih Tzu",
+      "size": "small",
+      "weightKg": [4, 7],
+      "image": "images/dogs/shih-tzu.png"
+    },
+    {
+      "id": 48,
+      "name": "Siberian Husky",
+      "size": "large",
+      "weightKg": [16, 27],
+      "image": "images/dogs/siberian-husky.png"
+    },
+    {
+      "id": 49,
+      "name": "Tibetan Mastiff",
+      "size": "large",
+      "weightKg": [45, 72],
+      "image": "images/dogs/tibetan-mastiff.png"
+    },
+    {
+      "id": 50,
+      "name": "Yorkshire Terrier",
+      "size": "small",
+      "weightKg": [2, 3],
+      "image": "images/dogs/yorkshire-terrier.png"
+    }
+  ]

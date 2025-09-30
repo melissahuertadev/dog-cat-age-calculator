@@ -1,9 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
-import breedsData from "../../public/breeds.json";
-
-const dogs = breedsData.dogs;
-const cats = breedsData.cats;
+import dogs from "../../public/breeds/dogs.json";
+import cats from "../../public/breeds/cats.json";
 
 function PetForm({onCalculate}) {
     const [type, setType] = useState("cat");
