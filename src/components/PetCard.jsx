@@ -7,7 +7,7 @@ function PetCard({ data }) {
     const { type, breedData, age, humanAge, petName } = data;
 
     const handleShare = () => {
-        const text = `${type === "dog" ? "🐶" : "🐱"} ${breedData?.name ?? "Mascota"} tiene ${age} años, que son ${humanAge} años humanos.`;
+        const text = `${type === "dog" ? "🐶" : "🐱"} ${breedData?.nameEs ?? "Mascota"} tiene ${age} años, que son ${humanAge} años humanos.`;
             if (navigator.share) {
                 navigator.share({ title: "Pet Age", text });
             } else {
@@ -22,7 +22,7 @@ function PetCard({ data }) {
             <div className="bg-cyan-100 w-full h-96 md:h-auto md:w-48 md:rounded-l-lg rounded-t-lg  flex-shrink-0">
                 <img
                     src={breedData?.image || notFoundImg}
-                    alt={breedData?.name || "Mascota"}
+                    alt={breedData?.nameEs || "Mascota"}
                     className="object-cover w-full h-full block"
                 />
             </div>
@@ -32,7 +32,7 @@ function PetCard({ data }) {
             <div className="flex flex-col justify-start p-4 flex-1 text-left">
                 <h2 className="text-2xl font-bold">{petName || "Mascota"}</h2>
                 <p className="text-gray-700 dark:text-gray-400">Tipo: {type === "dog" ? "Perro 🐶" : "Gato 🐱"}</p>
-                <p className="text-gray-700 dark:text-gray-400">Raza: {breedData?.name || "Desconocido"}</p>
+                <p className="text-gray-700 dark:text-gray-400">Raza: {breedData?.nameEs || "Desconocido"}</p>
                 <p className="text-gray-700 dark:text-gray-400">Edad: {age} años ({humanAge} años humanos)</p>
                 <div className="items-center">
                     <Button onClick={handleShare} color="#a55d1eff">Compartir</Button>

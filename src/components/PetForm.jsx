@@ -13,8 +13,9 @@ function PetForm({onCalculate}) {
 
     const breeds = type === "dog" ? dogs : cats;
     const breedData = breed.trim() 
-        ? breeds.find(b => b.name.toLowerCase() === breed.toLowerCase().trim()) 
+        ? breeds.find(b => b.nameEs.toLowerCase() === breed.toLowerCase().trim()) 
         : null;
+    
     const ageNum = Number(age);
 
     const isValid = petName &&
@@ -90,7 +91,7 @@ function PetForm({onCalculate}) {
                                 />
                                 <datalist id="breeds">
                                     {breeds.map((b) => (
-                                        <option key={b.id} value={b.name} />
+                                        <option key={b.id} value={b.nameEs} />
                                     ))}
                                 </datalist>
                             </div>
