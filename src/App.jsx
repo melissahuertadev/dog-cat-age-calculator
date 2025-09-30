@@ -37,7 +37,7 @@ function App() {
   return (
     <div className='p-6'>
       <h2 className='text-2xl font-bold text-center mb-6'>Calculadora de Edad de Mascota Feliz</h2>
-      <p className='text-center text-gray-600 dark:text-gray-400'>Ingresa los datos de tu mascota 🐶🐱</p>
+      {!hasData && <p className='text-center text-gray-600 dark:text-gray-400'>Ingresa los datos de tu mascota 🐶🐱</p>}
       <div className="mt-6">
         <AnimatePresence mode="wait">
           {!hasData ? (
