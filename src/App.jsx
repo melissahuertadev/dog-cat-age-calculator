@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from "./components/Button";
+import Modal from "./components/Modal";
 import PetForm from "./components/PetForm";
 import PetCard from "./components/PetCard";
 import './App.css'
@@ -43,8 +44,10 @@ function calculateHumanAge(type, age, breedData, size) {
 }
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
   const [result, setResult] = useState(null);
   const [hasData, setData] = useState(false);
+  const [leadEmail, setLeadEmail] = useState(null);
 
   const handleCalculate = ({type, breedData, age, petName, size}) => {
     // Determinar tamaño final del perro (para mostrar en la card también)
@@ -54,12 +57,29 @@ function App() {
 
     const humanAge = calculateHumanAge(type, age, breedData, size);
     setResult({type, breedData, age, humanAge, petName, size: finalSize});
+    setShowModal(true);
+  }
+
+  const handleModalSubmit = (email) => {
+    if (email) {
+      setLeadEmail(email);
+      console.log("Lead capturado:", email);
+      // TODO: mandar a backend
+    }
+
+    setShowModal(false);
     setData(true);
   }
+
+  const handleModalSkip = () => {
+    setShowModal(false);
+    setData(true);
+  };
 
   const handleReset = () => {
     setResult(null);
     setData(false);
+    setLeadEmail(null);
   };
 
   return (
@@ -89,6 +109,11 @@ function App() {
                 transition={{ duration: 0.6 }}
             >
                 <PetCard data={result} />
+                {leadEmail && (
+                  <p className="text-center text-sm text-gray-500 mt-2">
+                    Gracias, te enviaremos consejos a {leadEmail}
+                  </p>
+                )}
                 <div className="text-center mt-4">
                   <Button onClick={handleReset}>
                     Volver a calcular
@@ -98,6 +123,13 @@ function App() {
             )}
         </AnimatePresence>
       </div>
+
+      {/* Modal (encima de todo) */}
+      <Modal
+        show={showModal}
+        onSubmit={handleModalSubmit}
+        onClose={handleModalSkip}
+      />
     </div>
   )
 }
