@@ -4,18 +4,44 @@ import Button from './Button';
 
 function Modal({ show, onClose, onSubmit }) {
     const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
+
+    // Regex para validar email
+    // Acepta .com, .org, .net, .edu, .pe, etc
+    const validateEmail = (email) => {
+        const re = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    const handleSubmit = () => {
+        if (!validateEmail(email)) {
+            setError("Por favor, ingresa un correo válido.");
+            return;
+        }
+        
+        setError("");
+        onSubmit(email);
+    }
 
     return(
         <AnimatePresence>
+            {/*
+              * w-[calc(100%-40px)]       * En móviles ocupa todo menos 40px *
+              * max-w-[700px]             * Nunca pasa de 700px *
+              * sm:w-3/4                  * En >=640px ocupa 75% *
+              * md:w-1/2                  * En >=768px ocupa 50% *
+              * lg:w-2/5                  * En >=1024px ocupa 40% *
+              * xl:w-1/3                  * En >=1280px ocupa 33% *
+             */}
             { show && (
                 <motion.div
-                    className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+                    className="fixed inset-0 flex items-center justify-center bg-black/50 z-50"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                 >
                     <motion.div
-                        className="bg-white rounded-2xl shadow-lg p-6 max-w-sm w-full text-center"
+                        className="bg-white rounded-2xl shadow-lg p-6 w-[calc(100%-40px)] max-w-[700px] sm:w-3/4 md:w-1/2 lg:w-2/5 xl:w-1/3 text-center"
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0.8, opacity: 0 }}
@@ -34,26 +60,21 @@ function Modal({ show, onClose, onSubmit }) {
                             placeholder="Tu correo"
                             className="w-full border rounded-lg px-3 py-2 mb-3"
                         />
+                        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 
-                        <div className="flex gap-3">
-                            <button
-                                className="flex-1 bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition"
-                                onClick={onClose}
-                            >
-                                No gracias
-                            </button>
+                        <div className="flex gap-3 text-center justify-center">
+                            {/* Botón gris (izquierda) */}
+                            <Button onClick={onClose} color="#c2c1c1ff">
+                                No, gracias
+                            </Button>
 
-                            <button
-                                className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-                                onClick={() => {
-                                onSubmit(email);
-                                onClose();
-                                }}
-                                disabled={!email}
+                            {/* Botón azul (derecha) */}
+                            <Button
+                                onClick={handleSubmit}
+                                disabled={!validateEmail(email)}
                             >
                                 Quiero mis consejos 🎁
-                            </button>
-
+                            </Button>
                         </div>
                     </motion.div>
                 </motion.div>   

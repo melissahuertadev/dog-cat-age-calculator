@@ -10,7 +10,7 @@ function Button({ children, onClick, disabled = false, color = "#602d08ff"}) {
                 ? "bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 text-white"
                 : "bg-gray-300 text-gray-500 cursor-not-allowed"
                 }`}
-            style={!disabled ? { backgroundColor: color } : {}}
+            style={!disabled ? { backgroundColor: color } : {backgroundColor: "#ac9787ff", color: "white"}}
         >
             {children}
         </button>
