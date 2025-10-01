@@ -47,8 +47,13 @@ function App() {
   const [hasData, setData] = useState(false);
 
   const handleCalculate = ({type, breedData, age, petName, size}) => {
+    // Determinar tamaño final del perro (para mostrar en la card también)
+    const finalSize = type === "dog" 
+    ? (breedData?.size || size || "medium") 
+    : null;
+
     const humanAge = calculateHumanAge(type, age, breedData, size);
-    setResult({type, breedData, age, humanAge, petName});
+    setResult({type, breedData, age, humanAge, petName, size: finalSize});
     setData(true);
   }
 

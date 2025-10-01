@@ -4,7 +4,7 @@ import notFoundImg from '../../public/images/pet-not-found.png';
 function PetCard({ data }) {
     if (!data) return null;
 
-    const { type, breedData, age, humanAge, petName } = data;
+    const { type, breedData, age, humanAge, petName, size } = data;
 
     const handleShare = () => {
         const text = `${type === "dog" ? "🐶" : "🐱"} ${breedData?.nameEs ?? "Mascota"} tiene ${age} años, que son ${humanAge} años humanos.`;
@@ -15,6 +15,16 @@ function PetCard({ data }) {
                 alert("Texto copiado al portapapeles");
             }
     };
+    
+    const translateSize = (size) => {
+        switch (size) {
+            case "small": return "Pequeño";
+            case "medium": return "Mediano";
+            case "large": return "Grande";
+            case "giant": return "Gigante";
+            default: return size;
+        }
+    }
 
     return (
         <div className="flex flex-col md:flex-row items-stretch bg-white border border-gray-200 rounded-lg shadow-sm max-w-xl mx-auto hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -32,7 +42,9 @@ function PetCard({ data }) {
             <div className="flex flex-col justify-start p-4 flex-1 text-left">
                 <h2 className="text-2xl font-bold">{petName || "Mascota"}</h2>
                 <p className="text-gray-700 dark:text-gray-400">Tipo: {type === "dog" ? "Perro 🐶" : "Gato 🐱"}</p>
-                <p className="text-gray-700 dark:text-gray-400">Raza: {breedData?.nameEs || "Desconocido"}</p>
+                {size && <p className="text-gray-700 dark:text-gray-400">Tamaño: {translateSize(size)}</p>}
+                <p className="text-gray-700 dark:text-gray-400">Raza: {breedData?.nameEs || "Otro"}</p>
+                
                 <p className="text-gray-700 dark:text-gray-400">Edad: {age} años ({humanAge} años humanos)</p>
                 <div className="items-center">
                     <Button onClick={handleShare} color="#a55d1eff">Compartir</Button>
