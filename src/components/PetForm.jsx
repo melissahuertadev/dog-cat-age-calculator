@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Button";
 import Select from "./Select";
 import dogs from "../../public/breeds/dogs.json";
@@ -44,6 +44,15 @@ function PetForm({onCalculate}) {
 
         onCalculate({ type, breedData, age: Number(age), petName });
      }
+
+    useEffect(() => {
+        const existsInNewList = (type === "dog" ? dogs : cats)
+            .some(b => b.nameEs.toLowerCase() === breed.toLowerCase());
+        if (!existsInNewList) {
+            setBreed("");
+        }
+    }, [type]);
+
 
     return (
         <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4 max-w-2xl">
