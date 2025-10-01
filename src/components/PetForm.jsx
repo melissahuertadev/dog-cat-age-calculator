@@ -42,7 +42,7 @@ function PetForm({onCalculate}) {
         
         if (!breed || !age) return;
 
-        onCalculate({ type, breedData, age: Number(age), petName });
+        onCalculate({ type, breedData, age: Number(age), petName, size });
      }
 
     useEffect(() => {
