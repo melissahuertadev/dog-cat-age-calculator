@@ -1,22 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Button";
-import breedsData from "../../public/breeds.json";
-
-const dogs = breedsData.dogs;
-const cats = breedsData.cats;
+import Select from "./Select";
+import dogs from "../../public/breeds/dogs.json";
+import cats from "../../public/breeds/cats.json";
 
 function PetForm({onCalculate}) {
     const [type, setType] = useState("cat");
     const [breed, setBreed] = useState("");
     const [age, setAge] = useState("");
     const [petName, setPetName] = useState("");
+    const [size, setSize] = useState("small");
     const [petNameError, setPetNameError] = useState("");
     const [ageError, setAgeError] = useState("");
 
     const breeds = type === "dog" ? dogs : cats;
-    const breedData = breed.trim() 
-        ? breeds.find(b => b.name.toLowerCase() === breed.toLowerCase().trim()) 
+    const breedData = 
+        breed.trim() 
+        ? breeds.find(b => b.nameEs.toLowerCase() === breed.toLowerCase().trim()) 
         : null;
+
+    // Ordenar razas por nombre en español, donde "Otro" siempre va al final
+    const sortedBreeds = [...breeds].sort((a, b) => {
+        if (a.nameEs === "Otro") return 1;
+        if (b.nameEs === "Otro") return -1;
+        return a.nameEs.localeCompare(b.nameEs, "es", { sensitivity: "base" })
+    });
+    
     const ageNum = Number(age);
 
     const isValid = petName &&
@@ -33,8 +42,17 @@ function PetForm({onCalculate}) {
         
         if (!breed || !age) return;
 
-        onCalculate({ type, breedData, age: Number(age), petName });
+        onCalculate({ type, breedData, age: Number(age), petName, size });
      }
+
+    useEffect(() => {
+        const existsInNewList = (type === "dog" ? dogs : cats)
+            .some(b => b.nameEs.toLowerCase() === breed.toLowerCase());
+        if (!existsInNewList) {
+            setBreed("");
+        }
+    }, [type]);
+
 
     return (
         <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4 max-w-2xl">
@@ -64,16 +82,16 @@ function PetForm({onCalculate}) {
                         </div>
 
                         {/* Tipo */}
-                        <div className="col-span-1">
-                            <label htmlFor="type" className="block text-sm/6 font-medium text-gray-900 dark:text-white">Tipo</label>
-                            <div className="mt-2">
-                                <select id="type" name="type" autoComplete="off" className="w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:*:bg-gray-800 dark:focus:outline-indigo-500" value={type} onChange={(e) => setType(e.target.value)}>
-                                    <option value="cat">🐱 Gato</option>
-                                    <option value="dog">🐶 Perro</option>
-                                </select>
-                            </div>
-                        </div>
-
+                        <Select 
+                            id="type"
+                            label="Tipo"
+                            value={type}
+                            onChange={(e) => setType(e.target.value)}
+                            options={[
+                                { value: "cat", label: "🐱 Gato" },
+                                { value: "dog", label: "🐶 Perro" }
+                            ]}
+                        />
 
                         {/* Raza */}
                         <div className="col-span-1">
@@ -91,13 +109,28 @@ function PetForm({onCalculate}) {
                                     className="block min-w-0 grow bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6 dark:bg-transparent dark:text-white dark:placeholder:text-gray-500"
                                 />
                                 <datalist id="breeds">
-                                    {breeds.map((b) => (
-                                        <option key={b.id} value={b.name} />
+                                    {sortedBreeds.map((b) => (
+                                        <option key={b.id} value={b.nameEs} />
                                     ))}
                                 </datalist>
                             </div>
-
                         </div>
+
+                        {/* Tamaño */}
+                        {type === "dog" && breed.toLocaleLowerCase() === "otro" && (
+                            <Select 
+                                id="size"
+                                label="Tamaño"
+                                value={size}
+                                onChange={(e) => setSize(e.target.value)}
+                                options={[
+                                    { value: "small", label: "Pequeño" },
+                                    { value: "medium", label: "Mediano" },
+                                    { value: "large", label: "Grande" },
+                                    { value: "giant", label: "Gigante" }
+                                ]}
+                            />
+                        )}
 
                         {/** - cambiar a un date select "Cumpleaños" */}
                         {/* Cumpleaños */}
