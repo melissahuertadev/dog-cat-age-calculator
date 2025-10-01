@@ -41,26 +41,28 @@ function Modal({ show, onClose, onSubmit }) {
                     exit={{ opacity: 0 }}
                 >
                     <motion.div
-                        className="bg-white rounded-2xl shadow-lg p-6 w-[calc(100%-40px)] max-w-[700px] sm:w-3/4 md:w-1/2 lg:w-2/5 xl:w-1/3 text-center"
+                        className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-2xl shadow-lg p-6 w-[calc(100%-40px)] max-w-[700px] sm:w-3/4 md:w-1/2 lg:w-2/5 xl:w-1/3 text-center"
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0.8, opacity: 0 }}
                     >
                         <h2 className="text-xl font-bold mb-2">🎉 Último paso</h2>
-                        <p className="mb-4 text-gray-600">
+                        <p className="mb-4 text-gray-900 dark:text-white">
                             Ingresa tu correo y descubre la edad de tu mascota 🐶🐱.
                             <br />
                             Además, te enviaremos consejos personalizados.
                         </p>
 
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Tu correo"
-                            className="w-full border rounded-lg px-3 py-2 mb-3"
-                        />
-                        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+                         <div className="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 dark:bg-white/5 dark:outline-white/10 dark:focus-within:outline-indigo-500">
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Tu correo"
+                                className="block min-w-0 grow bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6 dark:bg-transparent dark:text-white dark:placeholder:text-gray-500"
+                            />
+                            {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+                         </div>
 
                         <div className="flex gap-3 text-center justify-center">
                             {/* Botón gris (izquierda) */}
