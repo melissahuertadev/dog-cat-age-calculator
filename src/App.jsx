@@ -6,11 +6,10 @@ import PetForm from "./components/PetForm";
 import PetCard from "./components/PetCard";
 import './App.css'
 
-// Actualizar función para calcular edad según tamaño
+// Determinar tamaño final: usa el 'size' de la raza, 
+// si es "Otro" usa el que eligió el usuario (size)
 function calculateHumanAge(type, age, breedData, size) {
   if (type === 'dog') {
-    // Determinar tamaño final: usa el 'size' de la raza, 
-    // si es "Otro" usa el que eligió el usuario (size)
     const dogSize = breedData?.size || size || "medium";
 
     let multiplier;
@@ -31,7 +30,6 @@ function calculateHumanAge(type, age, breedData, size) {
         multiplier = 5;
     }
 
-
     if (age === 1) return 15;
     if (age === 2) return 24;
     return 24 + (age - 2) * multiplier;
@@ -50,7 +48,7 @@ function App() {
   const [leadEmail, setLeadEmail] = useState(null);
 
   const handleCalculate = ({type, breedData, age, petName, size}) => {
-    // Determinar tamaño final del perro (para mostrar en la card también)
+    // Determinar tamaño final del perro (mostrar en la card también)
     const finalSize = type === "dog" 
     ? (breedData?.size || size || "medium") 
     : null;
