@@ -157,6 +157,7 @@ function PetForm({onCalculate}) {
                                 <input
                                     id="birthdate"
                                     type="date"
+                                    inputMode="none"
                                     autoComplete="off"
                                     value={birthDate}
                                     onChange={(e) => {
