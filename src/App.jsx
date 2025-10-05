@@ -5,6 +5,7 @@ import Modal from "./components/Modal";
 import PetForm from "./components/PetForm";
 import PetCard from "./components/PetCard";
 import './App.css'
+import { savePetData } from './firebase';
 
 // Determinar tamaño final: usa el 'size' de la raza, 
 // si es "Otro" usa el que eligió el usuario (size)
@@ -47,22 +48,34 @@ function App() {
   const [hasData, setData] = useState(false);
   const [leadEmail, setLeadEmail] = useState(null);
 
-  const handleCalculate = ({type, breedData, age, petName, size}) => {
+  const handleCalculate = ({type, breedData, age, petName, size, birthDate}) => {
     // Determinar tamaño final del perro (mostrar en la card también)
     const finalSize = type === "dog" 
     ? (breedData?.size || size || "medium") 
     : null;
 
     const humanAge = calculateHumanAge(type, age, breedData, size);
-    setResult({type, breedData, age, humanAge, petName, size: finalSize});
+    setResult({type, breedData, age, humanAge, petName, size: finalSize, birthDate});
     setShowModal(true);
   }
 
-  const handleModalSubmit = (email) => {
+  const handleModalSubmit = async (email) => {
     if (email) {
       setLeadEmail(email);
       console.log("Lead capturado:", email);
-      // TODO: mandar a backend
+
+      const petData = {
+        email,
+        petName: result.petName,
+        type: result.type,
+        breed: result.breedData?.name || "Otro",
+        size: result.size,
+        birthDate: result.birthDate || null,
+        humanAge: result.humanAge,
+        createdAt: new Date().toISOString()
+      };
+
+      await savePetData(petData);
     }
 
     setShowModal(false);

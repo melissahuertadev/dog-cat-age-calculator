@@ -51,7 +51,7 @@ function PetForm({onCalculate}) {
         if (!breed || !birthDate) return;
 
         const edad = calcularEdad(birthDate);
-        onCalculate({ type, breedData, age: edad, petName, size });
+        onCalculate({ type, breedData, age: edad, petName, size, birthDate });
      }
 
     useEffect(() => {
