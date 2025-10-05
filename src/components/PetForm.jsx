@@ -4,14 +4,26 @@ import Select from "./Select";
 import dogs from "../../public/breeds/dogs.json";
 import cats from "../../public/breeds/cats.json";
 
+const calcularEdad = (fechaNacimiento) => {
+    const hoy = new Date();
+    const nacimiento = new Date(fechaNacimiento)
+    let edad = hoy.getFullYear() - nacimiento.getFullYear()
+    const mes = hoy.getMonth() - nacimiento.getMonth()
+    if (mes < 0 || (mes === 0 && hoy.getDate < nacimiento.getDate())) {
+        edad--;
+    }
+
+    return edad;
+}
+
 function PetForm({onCalculate}) {
     const [type, setType] = useState("cat");
     const [breed, setBreed] = useState("");
-    const [age, setAge] = useState("");
+    const [birthDate, setBirthDate] = useState("");
     const [petName, setPetName] = useState("");
     const [size, setSize] = useState("small");
     const [petNameError, setPetNameError] = useState("");
-    const [ageError, setAgeError] = useState("");
+    const [birthdateError, setBirthdateError] = useState("");
 
     const breeds = type === "dog" ? dogs : cats;
     const breedData = 
@@ -25,24 +37,21 @@ function PetForm({onCalculate}) {
         if (b.nameEs === "Otro") return -1;
         return a.nameEs.localeCompare(b.nameEs, "es", { sensitivity: "base" })
     });
-    
-    const ageNum = Number(age);
 
     const isValid = petName &&
         petName.length <= 10 &&
         breedData &&
-        age !== "" &&
-        ageNum >= 0 &&
-        ageNum <= 20 &&
+        birthDate &&
         !petNameError &&
-        !ageError;
+        !birthdateError;
    
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        if (!breed || !age) return;
+        if (!breed || !birthDate) return;
 
-        onCalculate({ type, breedData, age: Number(age), petName, size });
+        const edad = calcularEdad(birthDate);
+        onCalculate({ type, breedData, age: edad, petName, size });
      }
 
     useEffect(() => {
@@ -142,31 +151,40 @@ function PetForm({onCalculate}) {
                                 htmlFor="age"
                                 className="block text-sm/6 font-medium text-gray-900 dark:text-white"
                             >
-                                Edad (años humanos)
+                                Fecha de Nacimiento <span className="text-gray-500">(DD-MM-YYYY)</span>
                             </label>
-                            <div className="mt-2">
+                             <div className="mt-2">
                                 <input
-                                    id="age"
-                                    type="number"
+                                    id="birthdate"
+                                    type="date"
                                     autoComplete="off"
-                                    placeholder="0"
-                                    value={age}
+                                    value={birthDate}
                                     onChange={(e) => {
-                                        let value = Number(e.target.value);                       
-                                        if (value < 0) {
-                                            setAgeError("La edad no puede ser negativa");
-                                        } else if (value > 20) {
-                                            setAgeError("La edad no puede ser mayor a 20 años");
+                                        const value = e.target.value; // 'YYYY-MM-DD'
+                                        if (!value) return;
+
+                                        const today = new Date();
+                                        const selected = new Date(value + "T00:00:00");
+                                        const thirtyYearsAgo = new Date(today.getFullYear() - 30, today.getMonth(), today.getDate())
+
+                                        if (selected > today) {
+                                            setBirthdateError("La fecha no puede ser futura 🕐");
+                                            setBirthDate("")
+                                        } else if (selected < thirtyYearsAgo) {
+                                            setBirthdateError("La mascota no puede tener más de 30 años 🦴");
+                                            setBirthDate("")
                                         } else {
-                                            setAgeError("");
-                                            setAge(value);
+                                            setBirthdateError("")
+                                            setBirthDate(value)
                                         }
                                     }}
-                                    min="0"
+                                    min="1995-01-01"
+                                    max={new Date().toISOString().split("T")[0]}
+                                    required
                                     className="block w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:ring-white/10 dark:focus:ring-indigo-500"
                                 />
-                            </div>
-                            {ageError && <p className="text-red-500 text-sm mt-1">{ageError}</p>}
+                             </div>
+                            {birthdateError && <p className="text-red-500 text-sm mt-1">{birthdateError}</p>}
                         </div>
                     </div>
                 </div>
